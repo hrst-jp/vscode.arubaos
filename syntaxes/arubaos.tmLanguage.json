@@ -1,0 +1,533 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ArubaOS",
+	"patterns": [
+		{
+			"include": "#acl"
+		},
+		{
+			"include": "#ip"
+		},
+		{
+			"include": "#lldp"
+		},
+		{
+			"include": "#logging"
+		},
+		{
+			"include": "#loop-protect"
+		},
+		{
+			"include": "#port trunking"
+		},
+		{
+			"include": "#qos"
+		},
+		{
+			"include": "#sflow"
+		},
+		{
+			"include": "#security"
+		},
+		{
+			"include": "#snmp"
+		},
+		{
+			"include": "#spanning-tree"
+		},
+		{
+			"include": "#time"
+		},
+		{
+			"include": "#vlan"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"acl": {
+			"patterns": [
+				{
+					"match": "^\\s*(access-list) (ip|ipv4|ipv6|mac) (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"3": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "^\\s+(\\d+) (permit|deny) (any|ip|ah|gre|esp|igmp|ospf|pim|\\d+) (any|\\S+) (any|\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"2": {
+							"name": "keyword.control"
+						}
+					}
+				},
+				{
+					"match": "^access-list log-timer (default|(\\d+))",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "keyword"
+						},
+						"2": {
+							"name": "constant.numeric"
+						}
+					}
+				},
+				{
+					"match": "^access-list secure-update",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"ip": {
+			"patterns": [
+				{
+					"match": "^\\s*ipv6 nd (dad attempts|cache-limit|hop-limit|mtu|ns-interval|router-preference)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*ipv6 nd ra (lifetime|managed-config-flag|max-interval|min-interval|reachable-time|retrans-timer)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*ip(v6)? address( dhcp-bootp)?",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*ip dhcp",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*ip route",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*ip default-gateway",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*(ip(v6)?)",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"lldp": {
+			"patterns": [
+				{
+					"match": "lldp",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"logging": {
+			"patterns": [
+				{
+					"match": "^logging",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"loop-protect": {
+			"patterns": [
+				{
+					"match": "\\b(loop-protect)\\b",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"port trunking": {
+			"patterns": [
+				{
+					"match": "^\\s*trunk (\\S+) (trk\\d+) (trunk|lacp)",
+					"name": "entity.name.function",
+					"captures": {
+						"2": {
+							"name": "constant.numeric"
+						},
+						"3": {
+							"name": "constant.language"
+						},
+						"4": {
+							"name": "keyword.control"
+						}
+					}
+				},
+				{
+					"match": "lacp (min-active-links|enable-timer)",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"qos": {
+			"patterns": [
+				{
+					"match": "^qos",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*apply policy (\\S+) in( per-interface)?",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "^\\s*class (ipv6|ip|mac) (\\S+) copy (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"2": {
+							"name": "string"
+						},
+						"3": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "^\\s+class ip (\\S+)",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"sflow": {
+			"patterns": [
+				{
+					"match": "^\\s*sflow( (collector|agent-ip|header-size|max-datagram-size|mode|polling|sampling))?",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*sflow mode (ingress|egress|both)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				}
+			]
+		},
+		"security": {
+			"patterns": [
+				{
+					"match": "^\\s*user (\\S+) group (administrators|operators|auditors|\\S+) password (ciphertext|plaintext) (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "variable.language"
+						},
+						"2": {
+							"name": "constant.language"
+						},
+						"4": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "user-group (\\S+)",
+					"captures": {
+						"1": {
+							"name": "variable.language"
+						}
+					}
+				},
+				{
+					"match": "user (\\S+) management-interface (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "variable.language"
+						},
+						"2": {
+							"name": "constant.language"
+						}
+					}
+				},
+				{
+					"match": "^\\s*ssh (ciphers|host-key(-algorithms)?|key-exchange-algorithms|known-host remove|macs|maximum-auth-attempts|public-key-algorithms|server (allow-list|port|vrf))",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*aaa accounting (all-mgmt|console-login-attempts|limit-login-attempts|login|minimum-password-length)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*(radius|tacacs)-server (auth-type|host( (secure ipsec|tls port-access|tls tracking-method))|key|retries|status-server interval|timeout|tracking)",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"snmp": {
+			"patterns": [
+				{
+					"match": "^snmp-server vrf (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "^snmp-server system-(contact|location|description) (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"2": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "^(snmp-server) (community) (\\S+)( (view) (\\S+))?",
+					"name": "entity.name.function",
+					"captures": {
+						"2": {
+							"name": "entity.name.function.member"
+						},
+						"3": {
+							"name": "string"
+						},
+						"5": {
+							"name": "entity.name.function.member"
+						},
+						"6": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "^\\s+(access-level) (ro|rw)",
+					"name": "entity.name.function",
+					"captures": {
+						"2": {
+							"name": "keyword.control"
+						}
+					}
+				},
+				{
+					"match": "^snmp-server ",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^snmpv3",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"spanning-tree": {
+			"patterns": [
+				{
+					"match": "^\\s*spanning-tree cost",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*spanning-tree instance",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*spanning-tree port-priority",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*spanning-tree",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"time": {
+			"patterns": [
+				{
+					"match": "^sntp",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*ntp (authentication(-key)?|disable|enable|server|trusted-key|vrf)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*(clock|time) timezone (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"2": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "^timesync",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"vlan": {
+			"patterns": [
+				{
+					"match": "^(vlan) (\\d+)",
+					"captures": {
+						"1": {
+							"name": "storage"
+						},
+						"2": {
+							"name": "constant.numeric"
+						}
+					}
+				},
+				{
+					"match": "(untagged|tagged) (((,)?(\\S+(-\\S+)?|trk\\d+))*)",
+					"name": "entity.name.function",
+					"captures": {
+						"2": {
+							"name": "constant.numeric"
+						}
+					}
+				},
+				{
+					"match": "\\b(voice)\\b",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "\\b(primary-vlan)\\b",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "vlan access",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "comment.block",
+					"begin": "banner motd !",
+					"end": "!"
+				},
+				{
+					"name": "comment.line",
+					"match": "^\\s*!.*"
+				},
+				{
+					"name": "comment.line",
+					"match": "^\\s*;.*"
+				},
+				{
+					"match": "hostname (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "name (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "^\\s*shutdown",
+					"name": "invalid",
+					"captures": {
+						"1": {
+							"name": "entity.name.function"
+						}
+					}
+				},
+				{
+					"match": "^\\s*no\\s(\\S+)",
+					"name": "invalid",
+					"captures": {
+						"1": {
+							"name": "entity.name.function"
+						}
+					}
+				},
+				{
+					"match": "\\b(\\d+/\\d+/\\d+)((-)\\d+/\\d+/\\d+)?\\b",
+					"name": "string",
+					"comment": "インターフェース名",
+					"captures": {
+						"3": {
+							"name": "keyword.operator"
+						}
+					}
+				},
+				{
+					"match": "\\b(\\d+)\\b",
+					"name": "constant.numeric",
+					"comment": "数字"
+				},
+				{
+					"match": "(aaa) (accounting) (all-mgmt|allow-fail-through)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "entity.name.class"
+						},
+						"2": {
+							"name": "entity.name.method"
+						}
+					}
+				},
+				{
+					"match": "(aaa) (authentication) (allow-fail-through|console-login-attempts|limit-login-attempts|login|minimum-password-length)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "entity.name.class"
+						},
+						"2": {
+							"name": "entity.name.method"
+						}
+					}
+				},
+				{
+					"match": "(aaa) (authentication) port-access (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "entity.name.class"
+						},
+						"2": {
+							"name": "entity.name.method"
+						}
+					}
+				},
+				{
+					"match": "^(interface|vlan)",
+					"name": "entity.name.type.class"
+				},
+				{
+					"match": "111^\\s*\\S+\\s",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.arubaos",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.arubaos",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "text.arubaos"
+}

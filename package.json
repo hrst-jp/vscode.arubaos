@@ -1,0 +1,34 @@
+{
+  "name": "arubaos",
+  "displayName": "ArubaOS",
+  "description": "Highlight the configuraiton file of ArubaOS",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "arubaos",
+        "aliases": [
+          "",
+          "arubaos"
+        ],
+        "extensions": [
+          ".aos"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "arubaos",
+        "scopeName": "text.arubaos",
+        "path": "./syntaxes/arubaos.tmLanguage.json"
+      }
+    ]
+  }
+}
