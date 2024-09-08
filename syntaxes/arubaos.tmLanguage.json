@@ -6,7 +6,19 @@
 			"include": "#acl"
 		},
 		{
-			"include": "#ip"
+			"include": "#a"
+		},
+		{
+			"include": "#b"
+		},
+		{
+			"include": "#c"
+		},
+		{
+			"include": "#h"
+		},
+		{
+			"include": "#i"
 		},
 		{
 			"include": "#lldp"
@@ -21,7 +33,7 @@
 			"include": "#port trunking"
 		},
 		{
-			"include": "#qos"
+			"include": "#q"
 		},
 		{
 			"include": "#sflow"
@@ -39,7 +51,7 @@
 			"include": "#time"
 		},
 		{
-			"include": "#vlan"
+			"include": "#v"
 		},
 		{
 			"include": "#keywords"
@@ -87,34 +99,609 @@
 				}
 			]
 		},
-		"ip": {
+		"a": {
 			"patterns": [
 				{
-					"match": "^\\s*ipv6 nd (dad attempts|cache-limit|hop-limit|mtu|ns-interval|router-preference)",
+					"match": "ap-altitude",
 					"name": "entity.name.function"
 				},
 				{
-					"match": "^\\s*ipv6 nd ra (lifetime|managed-config-flag|max-interval|min-interval|reachable-time|retrans-timer)",
+					"match": "ap am-filter-profile",
 					"name": "entity.name.function"
 				},
 				{
-					"match": "^\\s*ip(v6)? address( dhcp-bootp)?",
+					"match": "ap ap-blacklist-time (\\d+)/ap ap-denylist-time (\\d+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "constant.numeric"
+						},
+						"2": {
+							"name": "constant.numeric"
+						}
+					}
+				},
+				{
+					"match": "ap arm client-match",
 					"name": "entity.name.function"
 				},
 				{
-					"match": "^\\s*ip dhcp",
+					"match": "ap authorization-profile",
 					"name": "entity.name.function"
 				},
 				{
-					"match": "^\\s*ip route",
+					"match": "ap ble-configure",
 					"name": "entity.name.function"
 				},
 				{
-					"match": "^\\s*ip default-gateway",
+					"match": "ap ble-init-action",
 					"name": "entity.name.function"
 				},
 				{
-					"match": "^\\s*(ip(v6)?)",
+					"match": "apboot",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap clarity-synthetic",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap cellular",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "apconnect",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap consolidated-provision info",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap convert",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap-crash-transfer",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap-neighborhood",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap debug dot 11r remove-key",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap debug advanced-stats",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap debug client-trace stop",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap debug client-trace start",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap debug openflow",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap debug radio-diag-log",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap debug radio-event-log",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap debug radio-registers dump",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap debug stm-trace",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap-deep-sleep",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "apdisconnect",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap deploy-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap enet-link-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "apflash",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap flush-r1-on-new-r0",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap gap-db",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap get-crash-dumps",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap general-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap-group",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap image-preload",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap-lacp-strp-ip",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap-leds",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap lldp med-network-policy-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap lldp profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap location-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap mesh-accesslist-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap mesh-cluster-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap mesh-ht-ssid-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap mesh-radio-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap modem",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap modem-upgrade",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap multizone-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "apmove",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap-name",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap packet-capture",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap process restart",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap provisioning-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap provisioning-rule",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap provisioning-rules",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap randomize-channel",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap redeploy controller-less",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap-regroup",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap regulatory activate",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap regulatory-domain-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap regulatory reset",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap remote-debug-packet",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap-rename",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap sesimagotag-esl ugr-radio-firmware",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap spectrum clear-webui-view-settings",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap spectrum local-override",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap system-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap test",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "apugr",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap usb-acl-prof",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap usb-prof",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap wake-up",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap wifi-uplink-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap wipe out flash",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap wired-ap-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap wired-port-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ap zeroize-tpm-keys",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^\\s*apply policy (\\S+) in( per-interface)?",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				}
+			]
+		},
+		"b": {
+			"patterns": [
+				{
+					"match": "backup-controller ip",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "banner",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "boot set-default",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "boot system",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"c": {
+			"patterns": [
+				{
+					"match": "class copy",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "class ip",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "class ipv6",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "class mac",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "class resequence",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "class reset",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"h": {
+			"patterns": [
+				{
+					"match": "hash (l2-src-dst|l3-src-dst|l4-src-dst)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "held period",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "hello-interval",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "hop limit",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "hostname (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "hot-patch",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "hsc",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "http user-agent",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "http-proxy",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "https-server authentication certificate",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "https-server authentication password",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "https-server max-user-sessions",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "https-server rest access-mode",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "https-server rest firmware-site-distribution",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "https-server session close all",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "https-server session-timeout",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "https-server vrf",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"i": {
+			"patterns": [
+				{
+					"match": "ip (show|dhcp|disable|address|addr)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip bootp-gateway",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip dhcp( option)?",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip directed-broadcast",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip dns domain-list",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip dns domain-name",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip dns host",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip dns server address",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip ecmp dynamic-mode",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip forward-protocol udp",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip helper-address",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip icmp redirect",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip icmp throttle",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip icmp unreachable",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp (enable|disable)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp apply access-list",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp apply ssm-map access-list",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp last-member-query-interval",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp querier",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp querier interval",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp querier-wait-time",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp querier query-max-response-time",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp robustness",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp router-alert-check",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ig igmp snooping apply access list",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ig igmp snooping preprogram-starg-flow",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ig igmp snooping static group",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp snooping filter-unknown-mcast",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp snooping",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp static-group",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp version",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip igmp version strict",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip route",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip default-gateway",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ipv6 nd (dad attempts|cache-limit|hop-limit|mtu|ns-interval|router-preference)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ipv6 nd ra (lifetime|managed-config-flag|max-interval|min-interval|reachable-time|retrans-timer)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "ip(v6)? address( dhcp-bootp)?",
 					"name": "entity.name.function"
 				}
 			]
@@ -122,7 +709,83 @@
 		"lldp": {
 			"patterns": [
 				{
-					"match": "lldp",
+					"match": "lldp$",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp dot3",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp dot3 eee",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp dot3 mfs",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp dot3 poe",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp holdtime-multiplier",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp management-address vlan",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp management-ipv4-address",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp management-ipv6-address",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp med",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp med poe",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp med-location",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp receive",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp reinit",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp select-tlv",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp timer",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp transmit",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp trap enable",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp trap enable",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "lldp txdelay",
 					"name": "entity.name.function"
 				}
 			]
@@ -130,7 +793,31 @@
 		"logging": {
 			"patterns": [
 				{
-					"match": "^logging",
+					"match": "logging$",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "logging accounting-format-native",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "logging facility",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "logging filter",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "logging persistent-storage",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "logging-monitor {notify | severity | filter}",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "logging threshold",
 					"name": "entity.name.function"
 				}
 			]
@@ -138,7 +825,27 @@
 		"loop-protect": {
 			"patterns": [
 				{
-					"match": "\\b(loop-protect)\\b",
+					"match": "loop-protect$",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "loop-protect action",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "loop-protect re-enable-timer",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "loop-protect transmit-interval",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "loop-protect trap loop-detected",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "loop-protect vlan",
 					"name": "entity.name.function"
 				}
 			]
@@ -166,36 +873,54 @@
 				}
 			]
 		},
-		"qos": {
+		"q": {
 			"patterns": [
 				{
-					"match": "^qos",
-					"name": "entity.name.function"
-				},
-				{
-					"match": "^\\s*apply policy (\\S+) in( per-interface)?",
+					"match": "qos cos (\\d+)",
 					"name": "entity.name.function",
 					"captures": {
 						"1": {
-							"name": "string"
+							"name": "constant.numeric"
 						}
 					}
 				},
 				{
-					"match": "^\\s*class (ipv6|ip|mac) (\\S+) copy (\\S+)",
+					"match": "qos dscp (\\d+)",
 					"name": "entity.name.function",
 					"captures": {
-						"2": {
-							"name": "string"
-						},
-						"3": {
-							"name": "string"
+						"1": {
+							"name": "constant.numeric"
 						}
 					}
 				},
 				{
-					"match": "^\\s+class ip (\\S+)",
+					"match": "qos dscp-map",
 					"name": "entity.name.function"
+				},
+				{
+					"match": "qos queue-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "qos schedule-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "qos threshold-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "qos trust",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "queue (\\d) action",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "constant.numeric"
+						}
+					}
 				}
 			]
 		},
@@ -369,7 +1094,7 @@
 				}
 			]
 		},
-		"vlan": {
+		"v": {
 			"patterns": [
 				{
 					"match": "^(vlan) (\\d+)",
@@ -419,15 +1144,6 @@
 				{
 					"name": "comment.line",
 					"match": "^\\s*;.*"
-				},
-				{
-					"match": "hostname (\\S+)",
-					"name": "entity.name.function",
-					"captures": {
-						"1": {
-							"name": "string"
-						}
-					}
 				},
 				{
 					"match": "name (\\S+)",

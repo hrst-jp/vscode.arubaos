@@ -2,7 +2,8 @@
   "name": "arubaos",
   "displayName": "ArubaOS",
   "description": "Highlight the configuraiton file of ArubaOS",
-  "version": "0.0.1",
+  "publisher": "hrst",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -14,8 +15,9 @@
       {
         "id": "arubaos",
         "aliases": [
-          "",
-          "arubaos"
+          "arubaos",
+          "AOS-CX",
+          "AOS-S"
         ],
         "extensions": [
           ".aos"
@@ -30,5 +32,9 @@
         "path": "./syntaxes/arubaos.tmLanguage.json"
       }
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hrst-jp/vscode.arubaos"
   }
 }
