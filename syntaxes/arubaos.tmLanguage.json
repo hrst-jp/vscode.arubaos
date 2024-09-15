@@ -431,10 +431,6 @@
 					"name": "entity.name.function"
 				},
 				{
-					"match": "banner",
-					"name": "entity.name.function"
-				},
-				{
 					"match": "boot set-default",
 					"name": "entity.name.function"
 				},
@@ -468,6 +464,46 @@
 				},
 				{
 					"match": "class reset",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "client device-fingerprint apply-profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "client device-fingerprint client-limit",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "client device-fingerprint profile",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "client track ip($| (enable|disable|auto|all-vlans))",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "client track ip client-limit",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "client track ip update-interval",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "client track ip update-method probe",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "client-inactivity timeout",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "client-insight enable",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "client-insight on-boarding event logs",
 					"name": "entity.name.function"
 				}
 			]
@@ -793,10 +829,6 @@
 		"logging": {
 			"patterns": [
 				{
-					"match": "logging$",
-					"name": "entity.name.function"
-				},
-				{
 					"match": "logging accounting-format-native",
 					"name": "entity.name.function"
 				},
@@ -818,6 +850,19 @@
 				},
 				{
 					"match": "logging threshold",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "logging (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "logrotate (maxsize|period|target)",
 					"name": "entity.name.function"
 				}
 			]
@@ -995,7 +1040,35 @@
 		"snmp": {
 			"patterns": [
 				{
-					"match": "^snmp-server vrf (\\S+)",
+					"match": "snmp-server agent-port (\\d+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "constant.numeric"
+						}
+					}
+				},
+				{
+					"match": "snmp-server community (\\S+)( (view) (\\S+))?",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						},
+						"3": {
+							"name": "entity.name.function.member"
+						},
+						"4": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "snmp-server historical-counters-monitor",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "snmp-server host (\\S+)",
 					"name": "entity.name.function",
 					"captures": {
 						"1": {
@@ -1013,19 +1086,14 @@
 					}
 				},
 				{
-					"match": "^(snmp-server) (community) (\\S+)( (view) (\\S+))?",
+					"match": "^snmp-server trap",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "^snmp-server vrf (\\S+)",
 					"name": "entity.name.function",
 					"captures": {
-						"2": {
-							"name": "entity.name.function.member"
-						},
-						"3": {
-							"name": "string"
-						},
-						"5": {
-							"name": "entity.name.function.member"
-						},
-						"6": {
+						"1": {
 							"name": "string"
 						}
 					}
@@ -1044,7 +1112,7 @@
 					"name": "entity.name.function"
 				},
 				{
-					"match": "^snmpv3",
+					"match": "snmpv3 (context|engine-id|security-level|user)",
 					"name": "entity.name.function"
 				}
 			]
@@ -1097,6 +1165,33 @@
 		"v": {
 			"patterns": [
 				{
+					"match": "version (\\d+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "constant.numeric"
+						}
+					}
+				},
+				{
+					"match": "virtual-mac ((([a-f]|[0-9]){2}:){5}([a-f]|[0-9]){2})",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "vlan-aware-bundle (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				},
+				{
 					"match": "^(vlan) (\\d+)",
 					"captures": {
 						"1": {
@@ -1106,6 +1201,19 @@
 							"name": "constant.numeric"
 						}
 					}
+				},
+				{
+					"match": "vlan access (\\d+)",
+					"name": "entity.name.function",
+					"captures": {
+						"1": {
+							"name": "constant.numeric"
+						}
+					}
+				},
+				{
+					"match": "vlan trunk (allowed|native)",
+					"name": "entity.name.function"
 				},
 				{
 					"match": "(untagged|tagged) (((,)?(\\S+(-\\S+)?|trk\\d+))*)",
@@ -1121,11 +1229,16 @@
 					"name": "entity.name.function"
 				},
 				{
-					"match": "\\b(primary-vlan)\\b",
-					"name": "entity.name.function"
+					"match": "vrf( attach)? (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"2": {
+							"name": "string"
+						}
+					}
 				},
 				{
-					"match": "vlan access",
+					"match": "\\b(primary-vlan)\\b",
 					"name": "entity.name.function"
 				}
 			]
