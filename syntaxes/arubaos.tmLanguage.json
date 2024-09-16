@@ -64,15 +64,6 @@
 		"acl": {
 			"patterns": [
 				{
-					"match": "^\\s*(access-list) (ip|ipv4|ipv6|mac) (\\S+)",
-					"name": "entity.name.function",
-					"captures": {
-						"3": {
-							"name": "string"
-						}
-					}
-				},
-				{
 					"match": "^\\s+(\\d+) (permit|deny) (any|ip|ah|gre|esp|igmp|ospf|pim|\\d+) (any|\\S+) (any|\\S+)",
 					"name": "entity.name.function",
 					"captures": {
@@ -80,9 +71,90 @@
 							"name": "keyword.control"
 						}
 					}
+				}
+			]
+		},
+		"a": {
+			"patterns": [
+				{
+					"match": "aaa accounting (all-mgmt|allow-fail-through|port-access)",
+					"name": "entity.name.function"
 				},
 				{
-					"match": "^access-list log-timer (default|(\\d+))",
+					"match": "aaa authentication (allow-fail-through|console-login-attempts|limit-login-attempts|login|minimum-password-length)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access (allow-lldp-auth|allow-cdp-auth|allow-cdp-bpdu|allow-cdp-proxy-logoff|allow-lldp-bpdu)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access auth-(mode|precedence|priority|role)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access (cached-critical-role|captive-portal-profile)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access client-(auto-log-off|limit( multi-domain)?)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access dot1x authenticator (auth-method|cached-reauth(-period)?|eap-tls-fragment|discovery-period|eapol-timeout|initial-auth-response-timeout|macsec|max-eapol-requests|max-retries|mka cak-length|quiet-period|radius server-group|reauth(-period)?)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access dot1x authenticator( (enable|disable))?",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access dot1x supplicant",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access allow-(cdp|lldp)-auth",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access mac-auth (addr-format|auth-method|cached-reauth(-period)?)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access mac-auth (password|quiet-period|radius server-group|reauth(-period)?)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access mac-auth( (enable|disable))?",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authentication port-access radius-override",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa authorization (allow-fail-through|commands|radius)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa group server",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "aaa radius-attribute group",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "access-list (ip|ipv4|ipv6|mac) (\\S+)",
+					"name": "entity.name.function",
+					"captures": {
+						"2": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "access-list log-timer (default|(\\d+))",
 					"name": "entity.name.function",
 					"captures": {
 						"1": {
@@ -94,13 +166,9 @@
 					}
 				},
 				{
-					"match": "^access-list secure-update",
+					"match": "access-list secure-update",
 					"name": "entity.name.function"
-				}
-			]
-		},
-		"a": {
-			"patterns": [
+				},
 				{
 					"match": "ap-altitude",
 					"name": "entity.name.function"
@@ -593,6 +661,36 @@
 		"i": {
 			"patterns": [
 				{
+					"match": "interface (lag|loopback|vlan) (\\d+)",
+					"name": "storage",
+					"captures": {
+						"2": {
+							"name": "constant.numeric"
+						}
+					}
+				},
+				{
+					"match": "interface vxlan (\\d+)( mode (ipv4|ipv6))?",
+					"name": "storage",
+					"captures": {
+						"1": {
+							"name": "constant.numeric"
+						},
+						"3": {
+							"name": "string"
+						}
+					}
+				},
+				{
+					"match": "interface (\\S+)",
+					"name": "storage",
+					"captures": {
+						"1": {
+							"name": "string"
+						}
+					}
+				},
+				{
 					"match": "ip (show|dhcp|disable|address|addr)",
 					"name": "entity.name.function"
 				},
@@ -749,19 +847,7 @@
 					"name": "entity.name.function"
 				},
 				{
-					"match": "lldp dot3",
-					"name": "entity.name.function"
-				},
-				{
-					"match": "lldp dot3 eee",
-					"name": "entity.name.function"
-				},
-				{
-					"match": "lldp dot3 mfs",
-					"name": "entity.name.function"
-				},
-				{
-					"match": "lldp dot3 poe",
+					"match": "lldp dot3 (eee|mfs|poe|macphy)",
 					"name": "entity.name.function"
 				},
 				{
@@ -1028,10 +1114,6 @@
 					"name": "entity.name.function"
 				},
 				{
-					"match": "^\\s*aaa accounting (all-mgmt|console-login-attempts|limit-login-attempts|login|minimum-password-length)",
-					"name": "entity.name.function"
-				},
-				{
 					"match": "^\\s*(radius|tacacs)-server (auth-type|host( (secure ipsec|tls port-access|tls tracking-method))|key|retries|status-server interval|timeout|tracking)",
 					"name": "entity.name.function"
 				}
@@ -1120,19 +1202,43 @@
 		"spanning-tree": {
 			"patterns": [
 				{
-					"match": "^\\s*spanning-tree cost",
+					"match": "spanning-tree$",
 					"name": "entity.name.function"
 				},
 				{
-					"match": "^\\s*spanning-tree instance",
+					"match": "spanning-tree bpdu-(filter|guard( timeout)?)",
 					"name": "entity.name.function"
 				},
 				{
-					"match": "^\\s*spanning-tree port-priority",
+					"match": "spanning-tree config-(name|revision)",
 					"name": "entity.name.function"
 				},
 				{
-					"match": "^\\s*spanning-tree",
+					"match": "spanning-tree (cost|extend-system-id|forward-delay|hello-time|ignore-pvid-inconsistency)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "spanning-tree instance (cost|port-priority|priority|vlan)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "spanning-tree (link-type|loop-guard|max-(age|hops)|mode)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "spanning-tree (pathcost-type|port-(priority|type)|priority)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "spanning-tree (root-guard|rpvst-(filter|guard|mstp-interconnect-vlan))",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "spanning-tree (tcn-guard|transmit-hold-count|trap)",
+					"name": "entity.name.function"
+				},
+				{
+					"match": "spanning-tree vlan( (cost|port-priority))?",
 					"name": "entity.name.function"
 				}
 			]
@@ -1277,13 +1383,8 @@
 					}
 				},
 				{
-					"match": "^\\s*no\\s(\\S+)",
-					"name": "invalid",
-					"captures": {
-						"1": {
-							"name": "entity.name.function"
-						}
-					}
+					"match": "^\\s*no\\s",
+					"name": "invalid"
 				},
 				{
 					"match": "\\b(\\d+/\\d+/\\d+)((-)\\d+/\\d+/\\d+)?\\b",
@@ -1299,50 +1400,6 @@
 					"match": "\\b(\\d+)\\b",
 					"name": "constant.numeric",
 					"comment": "数字"
-				},
-				{
-					"match": "(aaa) (accounting) (all-mgmt|allow-fail-through)",
-					"name": "entity.name.function",
-					"captures": {
-						"1": {
-							"name": "entity.name.class"
-						},
-						"2": {
-							"name": "entity.name.method"
-						}
-					}
-				},
-				{
-					"match": "(aaa) (authentication) (allow-fail-through|console-login-attempts|limit-login-attempts|login|minimum-password-length)",
-					"name": "entity.name.function",
-					"captures": {
-						"1": {
-							"name": "entity.name.class"
-						},
-						"2": {
-							"name": "entity.name.method"
-						}
-					}
-				},
-				{
-					"match": "(aaa) (authentication) port-access (\\S+)",
-					"name": "entity.name.function",
-					"captures": {
-						"1": {
-							"name": "entity.name.class"
-						},
-						"2": {
-							"name": "entity.name.method"
-						}
-					}
-				},
-				{
-					"match": "^(interface|vlan)",
-					"name": "entity.name.type.class"
-				},
-				{
-					"match": "111^\\s*\\S+\\s",
-					"name": "entity.name.function"
 				}
 			]
 		},
