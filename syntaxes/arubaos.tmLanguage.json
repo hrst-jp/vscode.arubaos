@@ -30,6 +30,12 @@
 			"include": "#loop-protect"
 		},
 		{
+			"include": "#n"
+		},
+		{
+			"include": "#m"
+		},
+		{
 			"include": "#port trunking"
 		},
 		{
@@ -981,6 +987,54 @@
 				}
 			]
 		},
+		"n": {
+			"patterns": [
+				{
+					"match": "(\\S+) queue ([0-7])( \\S+)?$",
+					"name": "support.function",
+					"captures": {
+						"1": {
+							"name": "string"
+						},
+						"2": {
+							"name": "constant.numeric"
+						},
+						"3": {
+							"name": "comment"
+						}
+					}
+				}
+			]
+		},
+		"m": {
+			"patterns": [
+				{
+					"match": "map queue ([0-7]) (local-priority|cos) ([0-7])",
+					"name": "support.function",
+					"captures": {
+						"1": {
+							"name": "constant.numeric"
+						},
+						"3": {
+							"name": "constant.numeric"
+						}
+					}
+				},
+				{
+					"match": "min-bandwidth queue ([0-7]) percent (\\d+)",
+					"name": "support.function",
+					"captures": {
+						"1": {
+							"name": "constant.numeric"
+						},
+						"2": {
+							"name": "constant.numeric"
+						}
+					}
+				}
+			]
+		},
+
 		"port trunking": {
 			"patterns": [
 				{

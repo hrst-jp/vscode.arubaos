@@ -3,7 +3,7 @@
   "displayName": "ArubaOS",
   "description": "Highlight the configuraiton file of ArubaOS",
   "publisher": "hrst",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -19,8 +19,8 @@
           "AOS-CX",
           "AOS-S"
         ],
-        "extensions": [
-          ".aos"
+        "filenamePatterns": [
+          "{*.aos,*.aos.txt}"
         ],
         "configuration": "./language-configuration.json"
       }
